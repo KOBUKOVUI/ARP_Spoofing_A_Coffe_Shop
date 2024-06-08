@@ -6,12 +6,12 @@
 But remmember to use this knowledge responsibly and ethically. Happy Hacking !!! 🚀🔍🔐
 >
 
-In this project, I used `nmap` for Step 1 in the Cyber-Kill-Chain, which involves reconnaissance. Next, I launched a MITM (Man-In-The-Middle) attack using `bettercap` to capture and monitor activity on the network. Additionally, I employed `medusa` for a brute-force attack to discover the router's password. After gaining access, I made minor configuration changes to let them know I break into their Wi-Fi.
+In this project, I used `nmap` for Step 1 in the Cyber-Kill-Chain, which involves reconnaissance. Next, I launched a MITM (Man-In-The-Middle) attack using `bettercap` to capture and monitor activity on the network. Additionally, I employed `medusa` for a brute-force attack to discover the router's password. After gaining access, I made minor configuration changes to let them know I broke into their Wi-Fi.
 
 # Let's do it :ok_hand:
 
 ## 1. Nmap 
-+ Step 1: To launch a "Ping sweep" to find out IP address of devices connected to the Coffe shop's wifi, I used this command. 
++ Step 1: To launch a "Ping sweep" to find out IP addresses of devices connected to the Coffe shop's wifi, I used this command. 
 ```  
 sudo nmap -sP -T4 "IpAddressRange"
 ```  
@@ -31,7 +31,7 @@ I did notice a speecific device with the IP is: 192.168.1.81, so i took a closer
 *** The MAC address show us that this is an Aruba's device and it was even running Aruba O.S => This must be a router. 
 
 + Step 3: Using brute-force to find its password:  
-In this step, i used medusa, because this one is my fav, but you can use `hydra`, `john the ripper` instead.
+In this step, i used `medusa`, because this one is my fav, but you can use `hydra`, `john the ripper` instead.
 And i downloaded the rockyou dictionary which is one of the most common dictionary for brute-force, you can easily download it on the Internet or make your own dictionary.  
 The command was like this 
 
@@ -44,7 +44,7 @@ sudo medusa -h "IpAddress" -u "username" -P "dictionary"  -M "connection type" -
 As you can see in the last line, i found the password which is: admin (they didn't give a shit about changing the default password lmao :V)
 
 + Step 4: Get in and do some little tricks   
-Enter the Ip address of this router to your webrowser and you can go to the configuration website.  
+Enter the Ip address of this router to your web browser and you can go to the configuration website.  
 ![web](imgs/entersthepassword.png)
 
 I was in, so this time i just added a new wifi named after my fav girls(my mother's friend :v) as a sign that i was there.  
@@ -72,8 +72,8 @@ net.show
 Voila  
 ![probeandshow](imgs/netprobeandnetshow.png)
 
-+ Step 3: Choose a target
-The Mac Girl behind me looked extremly suspicious, so my eyes was on her :V (kidding). After analying what Mac model she was using, i found that her MacPro's IP was 192.168.1.59.  
++ Step 3: Choose a target  
+The Mac Girl behind me looked extremly suspicious, so my eyes was on her :V (kidding). After analyzing what Mac model she was using, i found that her MacPro's IP was 192.168.1.59.  
 I used ARP spoofing attack which is a technique where an attacker sends spoofed Address Resolution Protocol (ARP) messages onto a local area network. The goal is to associate the attacker’s MAC address with the IP address of another host (such as the default gateway). (Thanks to Copilot :V). I set the target for better with the command below, then start arp.spoof, finally sniff sniff 
 ```
 set arp.spoof.targets "IPaddress" 
@@ -84,8 +84,8 @@ net.sniff on
 ```
 ![settarget](imgs/arpspoofandnet.sniff.png)  
 
-Oh, she was just surfing facebook, not watching tiktok as i thougt. Luckily not a cancer :V 
+Oh, she was just surfing facebook, not watching tiktok as i thougt.  Luckily not a cancer :V 
 
-+Step 5: We can redirect the traffic to our own website using DNS spoofing but i will show it later, if i still remmember this project :V. 
++ Step 5: We can redirect the traffic to our own website using DNS spoofing but i will show it later, only if i still remmember this project :V. 
 
 
