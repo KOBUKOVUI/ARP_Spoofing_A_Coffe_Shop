@@ -6,7 +6,7 @@
 But remmember to use this knowledge responsibly and ethically. Happy Hacking !!! 🚀🔍🔐
 >
 
-In this project, I used `nmap` for Step 1 in the Cyber-Kill-Chain, which involves reconnaissance. Next, I launched a MITM (Man-In-The-Middle) attack using `bettercap` to capture and monitor activity on the network. Additionally, I employed `medusa` for a brute-force attack to discover the router's password. After gaining access, I made minor configuration changes to let them know I broke into their Wi-Fi.
+In this project, I used `nmap` for Step 1 in the Cyber-Kill-Chain, which involves reconnaissance. Next, I launched a MITM (Man-In-The-Middle) attack using `bettercap` to capture and monitor activity on the network. Additionally, I employed `medusa` for a brute-force attack to discover the swtich's password. After gaining access, I made minor configuration changes to let them know I broke into their Wi-Fi.
 
 # Let's do it :ok_hand:
 
@@ -28,7 +28,7 @@ My command looked like this, you can change your IP address based on your target
 I did notice a speecific device with the IP is: 192.168.1.81, so i took a closer look at it.       
 ![-sVResult](imgs/result-sVscan.png)  
 
-*** The MAC address show us that this is an Aruba's device and it was even running Aruba O.S => This must be a router. 
+*** The MAC address show us that this is an Aruba's device and it was even running Aruba O.S => This must be a switch. 
 
 + Step 3: Using brute-force to find its password:  
 In this step, i used `medusa`, because this one is my fav, but you can use `hydra`, `john the ripper` instead.
@@ -44,7 +44,7 @@ sudo medusa -h "IpAddress" -u "username" -P "dictionary"  -M "connection type" -
 As you can see in the last line, i found the password which is: admin (they didn't give a shit about changing the default password lmao :V)
 
 + Step 4: Get in and do some little tricks   
-Enter the Ip address of this router to your web browser and you can go to the configuration website.  
+Enter the Ip address of this switch to your web browser and you can go to the configuration website.  
 ![web](imgs/entersthepassword.png)
 
 I was in, so this time i just added a new wifi named after my fav girls(my mother's friend :v) as a sign that i was there.  
